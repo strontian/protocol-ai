@@ -1,3 +1,0 @@
-Attempt2 uses decorators to allow the user to specify field specific instructions. The decorator method stashes metadata on the constructor(which is shared with the parent class).
-
-The user then passes the output class(with decorators) to the OutputSpec

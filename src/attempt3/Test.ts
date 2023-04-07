@@ -37,7 +37,7 @@ async function test() {
   const prompt = `${instructions}\n\n${question}`;
 
   console.log(prompt)
-  
+
   // Step 5: Make a call to OpenAI with the question + instructions
   const response = await openai.createCompletion({
     model: "text-davinci-003",
@@ -50,10 +50,10 @@ async function test() {
   console.log(responseText)
 
   // Step 6: Pass the response back to the OutputSpec to get the Octopus objects
-  //const octopuses = outputSpec.reponseToObjects(responseText);
+  const octopuses = outputSpec.reponseToObjects(responseText);
 
   // Step 7: Print the objects
-  //console.log(octopuses);
+  console.log(octopuses);
 }
 
 test();
