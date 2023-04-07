@@ -1,31 +1,31 @@
 `protocolai` converts LLM responses into typed class objects that can be used by your program.
 
-This is an early stage prototype.
+This is an experimental prototype. I'd love to hear feedback or experiment results.
 
 ## Overview ##
 
-First, writes one or more classes for the LLM to use in its responses, using the `ParameterDecorator` provided by the library on **each constructor parameter**
+First, write classes for the LLM to use in its responses, using the `ParameterDecorator` provided by the library on **each constructor parameter**
 
-Next, create a `Protocol`, passing the class(es) you created into the constructor.
+Next, create a `Protocol` instance, passing the class you created into the constructor. 
 
 The `Protocol` class has two main functions:
 
-1. `getInstructions` provides a prompt with instructions telling the LLM how to respond in a way that can be translated back into objects. Prepend the instructions to your task request before .
+1. `getInstructions` - provides instructions for the LLM about how to structure its response so it can be translated back into objects. Combine the instructions with your task request before calling the LLM.
 
-2. `decodeResponse` converts a response from the LLM back into instances of the class objects provided. Returns an array with elements with a union type of the provided classes.
+2. `decodeResponse` - converts a response from the LLM back into instances of the class objects provided. Returns an array with elements with a union type of the provided classes.
 
 
 ## Example Usage ##
 
-In this example, we are going to ask the LLM to give us a list of Octopuses and some facts about them.
+In this example, we want the LLM to generate some facts about different kinds of Octopuses.
 
-First, we create a class for the responses.
+Create a class for the responses:
 
 ```typescript
 
 class Octopus {
   constructor(
-    @ParameterSpec({ fieldType: "string", instructions: "Provide the octopus species name" })
+    @ParameterSpec({ fieldType: "string", instructions: "The species name of the octopus" })
     public species: string,
     @ParameterSpec({ fieldType: "number", instructions: "The approximate length of the octopus' lifespan" })
     public lifespan: number,
@@ -36,7 +36,7 @@ class Octopus {
 }
 ```
 
-Prepare a prompt for the LLM by combining the instructions for using the protocl with a task request:
+Prepare a prompt for the LLM by combining the protocol instructions with a task request:
 
 ```typescript
   const protocol = new Protocol(Octopus)
@@ -53,7 +53,7 @@ Generate a completion, and translate it back into object instances:
     prompt: prompt,
     max_tokens: 1000,
   })
-  //TypeScript will
+  //The decoded response is an array with elements that have a union type of each class you provided. In this case, it's just Octopus.
   const octopuses: Octopus[] = outputSpec.decodeResponse(response.data.choices[0].text as string)
   console.log(octopuses)
   /*
@@ -67,15 +67,15 @@ Generate a completion, and translate it back into object instances:
 
 ## Protocol ##
 
-The library constraints the output of the LLM in a few ways. 
+The library constrains the output of the LLM in a few ways. 
 
 1. The LLM is instructed to return a series of messages. The format looks like this:
 
 ```json
 [
-  [messageType1, arg1, arg2, ...]
-  [messageType1, arg1, arg2, ...]
-  [messageType2, arg1, arg2, ...]
+  ["messageType1", "arg1", "arg2", "..."]
+  ["messageType1", "arg1", "arg2", "..."]
+  ["messageType2", "arg1", "arg2", "..."]
 ]
 ```
 
