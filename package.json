@@ -1,24 +1,24 @@
 {
-  "name": "protocolai",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "name": "protocol-ai",
+  "version": "0.1.0-alpha",
+  "description": "TypeScript library allowing LLMs to provide typed responses to interact with your program.",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "ts-node-esm src/index.ts",
-    "testi": "ts-node-esm src/attempt3/Test.ts"
+    "start": "ts-node-esm src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.3",
+    "openai": "^3.2.1"
   },
   "dependencies": {
-    "openai": "^3.2.1",
-    "reflect-metadata": "^0.1.13"
   }
+
 }

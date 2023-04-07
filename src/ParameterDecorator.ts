@@ -9,7 +9,6 @@ export type ParameterSpecOptionsPlus = {
   fieldType: BasicTypes
   instructions: string
   parameterIndex: number
-  //propertyKey: string
 }
 
 export const parameterSpecKey = Symbol("parameterSpec")

@@ -2,8 +2,9 @@
   "compilerOptions": {
     "target": "es6",
     "module": "nodenext",
+    "declaration": true,
     "experimentalDecorators": true,
-    "outDir": "./dist",
+    "outDir": "./lib",
     "strict": true,
     "esModuleInterop": true
   },

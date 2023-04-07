@@ -1,14 +1,14 @@
 import { parameterSpecKey, ParameterSpecOptionsPlus } from './ParameterDecorator.js'
 import { RESPONSE_PROMPT } from './prompts.js'
 
-export default class OutputSpec<T extends (new (...args: any[]) => any)[]> {
+export default class Protocol<T extends (new (...args: any[]) => any)[]> {
   private classConstructors: [...T]
 
   constructor(...classConstructors: T) {
     this.classConstructors = classConstructors
   }
 
-  reponseToObjects(message: string): InstanceType<T[number]>[] {
+  decodeResponse(message: string): InstanceType<T[number]>[] {
     const parsedOutput: any[][] = JSON.parse(message)
     const instances: InstanceType<T[number]>[] = parsedOutput.map(item => {
       const [className, ...constructorArgs] = item
