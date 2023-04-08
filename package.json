@@ -1,6 +1,6 @@
 {
   "name": "protocol-ai",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.4",
   "description": "TypeScript library allowing LLMs to provide typed responses to interact with your program.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,8 +9,12 @@
     "build": "tsc"
   },
   "keywords": [],
-  "author": "",
+  "author": "David Strawn",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strontian/protocol-ai.git"
+  },
   "devDependencies": {
     "openai": "^3.2.1",
     "ts-node": "^10.9.1",

@@ -85,6 +85,21 @@ The library constrains the output of the LLM in a few ways.
 
 You can provide the LLM with further instructions about when and how messages should be returned, for example that a message should only appear once, or that some messages are mutually exclusive.
 
+## Installation & Setup ##
+
+Currently only supports ES modules.
+
+Requires decorators to be enabled in your `tsconfig.json` file.
+
+```json
+"experimentalDecorators": true
+```
+
+Install with npm
+
+```sh
+npm i protocol-ai
+```
 
 ## Limitations ##
 
