@@ -1,24 +1,19 @@
 {
   "name": "protocol-ai",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-alpha.2",
   "description": "TypeScript library allowing LLMs to provide typed responses to interact with your program.",
-  "main": "lib/index.js",
-  "module": "lib/index.esm.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "start": "ts-node-esm src/index.ts"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "openai": "^3.2.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.3",
-    "openai": "^3.2.1"
-  },
-  "dependencies": {
+    "typescript": "^5.0.3"
   }
-
 }
